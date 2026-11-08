@@ -1,0 +1,150 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls">
+
+    <Style TargetType="{x:Type controls:ThemeToggleButton}">
+        <Setter Property="Width" Value="180"/>
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.ButtonIdleBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="ToggleBoxWidth" Value="90"/>
+        <Setter Property="ToggleBoxHeight" Value="45"/>
+        <Setter Property="ToggleBoxFill" Value="{DynamicResource Brush.ButtonPressedBackground}"/>
+        <Setter Property="ToggleBoxStroke" Value="{DynamicResource Brush.IdleForeground}"/>
+        <Setter Property="ToggleBoxStrokeThickness" Value="1"/>
+        <Setter Property="IconSize" Value="15"/>
+        <Setter Property="IconLeftPos" Value="16"/>
+        <Setter Property="IconRightPos" Value="106"/>
+        <Setter Property="IconTextLeftPos" Value="39"/>
+        <Setter Property="IconTextRightPos" Value="128"/>
+        <Setter Property="TextBlockWidth" Value="30"/>
+        <Setter Property="TextBlockHeight" Value="15"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ThemeToggleButton}">
+                    <Grid x:Name="Grid_Button"
+                          Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                          Background="Transparent">
+                        <Border x:Name="Border_Button"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"/>
+                        <Canvas Background="Transparent"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}">
+                            <Rectangle x:Name="Rectangle_Button"
+                                       Width="{TemplateBinding ToggleBoxWidth}"
+                                       Height="{TemplateBinding ToggleBoxHeight}"
+                                       Panel.ZIndex="1"
+                                       Fill="{TemplateBinding ToggleBoxFill}"
+                                       Stroke="{TemplateBinding ToggleBoxStroke}"
+                                       StrokeThickness="{TemplateBinding ToggleBoxStrokeThickness}"
+                                       Canvas.Left="0"/>
+                        </Canvas>
+                        <Path Width="{TemplateBinding IconSize}"
+                              Height="{TemplateBinding IconSize}"
+                              Panel.ZIndex="2"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              IsHitTestVisible="False"
+                              Stretch="Uniform"
+                              Data="{DynamicResource Geom.Light}"
+                              Stroke="{DynamicResource Brush.ForegroundNormal}"
+                              StrokeThickness="1.5"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round">
+                            <Path.RenderTransform>
+                                <TranslateTransform X="{Binding IconLeftPos, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Path.RenderTransform>
+                        </Path>
+                        <TextBlock x:Name="Text_Light"
+                                   Width="{TemplateBinding TextBlockWidth}" Height="{TemplateBinding TextBlockHeight}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center"
+                                   Panel.ZIndex="2"
+                                   Foreground="{DynamicResource Brush.ForegroundNormal}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Text="{DynamicResource String.Light}">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform X="{Binding IconTextLeftPos, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <Path Width="{TemplateBinding IconSize}"
+                              Height="{TemplateBinding IconSize}"
+                              Panel.ZIndex="2"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              IsHitTestVisible="False"
+                              Stretch="Uniform"
+                              Data="{DynamicResource Geom.Dark}"
+                              Fill="{DynamicResource Brush.ButtonIdleForeground}"
+                              Stroke="{DynamicResource Brush.ButtonIdleForeground}"
+                              StrokeThickness="0.6"
+                              StrokeStartLineCap="Flat"
+                              StrokeEndLineCap="Flat"
+                              StrokeLineJoin="Miter">
+                            <Path.RenderTransform>
+                                <TranslateTransform X="{Binding IconRightPos, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Path.RenderTransform>
+                        </Path>
+                        <TextBlock x:Name="Text_Dark"
+                                   Width="{TemplateBinding TextBlockWidth}" Height="{TemplateBinding TextBlockHeight}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Center"
+                                   Panel.ZIndex="2"
+                                   Foreground="{DynamicResource Brush.ButtonIdleForeground}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Text="{DynamicResource String.Dark}">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform X="{Binding IconTextRightPos, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="CheckTrue">
+                            <DoubleAnimation Storyboard.TargetName="Rectangle_Button"
+                                             Storyboard.TargetProperty="(Canvas.Left)"
+                                             From="0" To="90"
+                                             Duration="0:0:0.25"/>
+                        </Storyboard>
+                        <Storyboard x:Key="CheckFalse">
+                            <DoubleAnimation Storyboard.TargetName="Rectangle_Button" 
+                                             Storyboard.TargetProperty="(Canvas.Left)" 
+                                             From="90" To="0"
+                                             Duration="0:0:0.25"/>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <BeginStoryboard Storyboard="{StaticResource CheckTrue}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <BeginStoryboard Storyboard="{StaticResource CheckFalse}"/>
+                        </EventTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border_Button" Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="Border_Button" Property="BorderThickness" Value="2"/>
+                            <Setter TargetName="Rectangle_Button" Property="Stroke" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="Rectangle_Button" Property="StrokeThickness" Value="2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

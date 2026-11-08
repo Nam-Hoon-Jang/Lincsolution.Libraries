@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <s:String x:Key="String.Idle">대기</s:String>
+    <s:String x:Key="String.Busy">작동중</s:String>
+    <s:String x:Key="String.Ready">준비</s:String>
+    <s:String x:Key="String.Build">빌드</s:String>
+    <s:String x:Key="String.Pause">일시정지</s:String>
+    <s:String x:Key="String.Done">완료</s:String>
+    <s:String x:Key="String.Stop">정지</s:String>
+    <s:String x:Key="String.Warning">경고</s:String>
+    <s:String x:Key="String.Error">에러</s:String>
+
+    <s:String x:Key="String.Dashboard">대시보드</s:String>
+    <s:String x:Key="String.Monitoring">모니터링</s:String>
+    <s:String x:Key="String.Control">제어</s:String>
+    <s:String x:Key="String.LogList">로그목록</s:String>
+    <s:String x:Key="String.BuildParameter">빌드 파라미터</s:String>
+    <s:String x:Key="String.Preference">설정</s:String>
+    <s:String x:Key="String.Light">밝게</s:String>
+    <s:String x:Key="String.Dark">어둡게</s:String>
+    <s:String x:Key="String.Status">상태</s:String>
+    <s:String x:Key="String.Emergency">비상 정지</s:String>
+    <s:String x:Key="String.Emergency.NewLine">비상&#10;정지</s:String>
+
+    <s:String x:Key="String.Alarm.Information">알림</s:String>
+    <s:String x:Key="String.Alarm.Warning">경고</s:String>
+    <s:String x:Key="String.Alarm.Error">에러</s:String>
+    <s:String x:Key="String.Popup.OK">확인</s:String>
+    <s:String x:Key="String.Popup.Yes">예</s:String>
+    <s:String x:Key="String.Popup.No">아니오</s:String>
+</ResourceDictionary>

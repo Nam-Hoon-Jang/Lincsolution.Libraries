@@ -1,0 +1,9 @@
+﻿<Project>
+	<PropertyGroup>
+		<UseArtifactsOutput>true</UseArtifactsOutput>
+		<ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+		<!-- Release 빌드 시 배포 가능한 라이브러리의 NuGet 패키지 자동 생성. -->
+		<GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+		<PackageOutputPath>$(MSBuildThisFileDirectory)artifacts\packages\$(Configuration)</PackageOutputPath>
+	</PropertyGroup>
+</Project>

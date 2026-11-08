@@ -1,0 +1,96 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls">
+
+    <Style x:Key="NumPadButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="FontFamily"
+                Value="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type controls:NumPad}}}"/>
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type controls:NumPad}}}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border_Button"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border_Button" Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="Border_Button" Property="BorderThickness" Value="2"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border_Button" Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border_Button" Property="Background" Value="{DynamicResource Brush.IdleBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:NumPad}">
+        <Setter Property="Width" Value="224"/>
+        <Setter Property="Height" Value="343"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NumPad}">
+                    <Border x:Name="Border_NumPad"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="47"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Tag="1" Content="1" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="0" Grid.Column="1" Tag="2" Content="2" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="0" Grid.Column="2" Tag="3" Content="3" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="1" Grid.Column="0" Tag="4" Content="4" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="1" Grid.Column="1" Tag="5" Content="5" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="1" Grid.Column="2" Tag="6" Content="6" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="2" Grid.Column="0" Tag="7" Content="7" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="2" Grid.Column="1" Tag="8" Content="8" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="2" Grid.Column="2" Tag="9" Content="9" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="3" Grid.Column="0" Tag="BackSpace" Content="←" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="3" Grid.Column="1" Tag="0" Content="0" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="3" Grid.Column="2" Tag="Dot" Content=". / -" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="4" Grid.Column="0" Tag="ESC" Content="ESC" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="4" Grid.Column="1" Tag="Clear" Content="C" Style="{StaticResource NumPadButtonStyle}"/>
+                            <Button Grid.Row="4" Grid.Column="2" Tag="Apply" Content="{TemplateBinding ApplyContent}" Style="{StaticResource NumPadButtonStyle}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border_NumPad" Property="Background" Value="{DynamicResource Brush.IdleBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

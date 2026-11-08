@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Lincsolution.UI.Resources</AssemblyName>
+    <RootNamespace>Lincsolution.UI.Resources</RootNamespace>
+    <PackageId>Lincsolution.UI.Resources</PackageId>
+    <Authors>Lincsolution</Authors>
+    <Company>Lincsolution</Company>
+    <Description>Shared WPF colors, brushes, fonts, geometries, drawing images, and themes for Lincsolution applications.</Description>
+    <PackageTags>wpf;ui;resources;theme</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Platforms>AnyCPU</Platforms>
+	<IsPackable>true</IsPackable>
+	<Version>0.1.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Font\*.ttf" />
+    <Resource Include="Font\*.ttf" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Lincsolution.UI.Base</AssemblyName>
+    <RootNamespace>Lincsolution.UI.Base</RootNamespace>
+	<IsPackable>true</IsPackable>
+	<PackageId>Lincsolution.UI.Base</PackageId>
+	<Version>0.1.1</Version>
+	<Authors>Lincsolution</Authors>
+	<Description>Lincsolution UI Base Library</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lincsolution.Core.Base\Lincsolution.Core.Base.csproj" />
+    <ProjectReference Include="..\Lincsolution.Core.SourceGenerator\Lincsolution.Core.SourceGenerator.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

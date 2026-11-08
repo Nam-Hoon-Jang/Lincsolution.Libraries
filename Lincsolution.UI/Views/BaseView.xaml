@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="Lincsolution.UI.BaseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lincsolution.UI"
+             xmlns:ctrl="clr-namespace:Lincsolution.UI.Controls;assembly=Lincsolution.UI.Controls"
+             xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base"
+             mc:Ignorable="d" 
+             d:DesignWidth="1920" d:DesignHeight="1080"
+             x:Name="BaseViewWindow">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource Brush.MainBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="ResizableMainColumn"
+                              Width="{Binding ResizableMainColumnWidth, ElementName=BaseViewWindow, FallbackValue=280}"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="176"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="88"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="88"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#region Title Bar-->
+        <ctrl:StatusGrid Grid.Column="0" Grid.Row="0"
+                       Panel.ZIndex="1000"
+                       Status="{Binding Status, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                       MouseLeftButtonDown="WindowDrag">
+            <Border BorderBrush="{DynamicResource Brush.Border}" BorderThickness="0 0 1 1"/>
+            <Path Data="{DynamicResource Geom.Lincsolution}" Height="36.62" Fill="{DynamicResource Brush.White}" Stretch="Uniform"/>
+        </ctrl:StatusGrid>
+        <ctrl:OpacityAdjustableStatusGrid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
+                                          Panel.ZIndex="1000"
+                                          Status="{Binding Status, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                                          MouseLeftButtonDown="WindowDrag">
+            <ctrl:OpacityAdjustableStatusGrid.ColumnDefinitions>
+                <ColumnDefinition Width="88"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="210"/>
+                <ColumnDefinition Width="88"/>
+                <ColumnDefinition Width="88"/>
+                <ColumnDefinition Width="88"/>
+            </ctrl:OpacityAdjustableStatusGrid.ColumnDefinitions>
+            <ctrl:StatusLabel Grid.Column="1"  Tag="{Binding Status, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                              Width="140" Height="50" CornerRadius="25" IconSize="25" IconLeftPos="12"
+                              TextBlockLeftPos="50" TextBlockHeight="25" FontSize="18"/> 
+            <Grid Grid.Column="3">
+                <ctrl:ThemeToggleButton Grid.Column="2" IconSize="15" ToggleBoxStroke="{DynamicResource Brush.IdleForeground}"/>
+            </Grid>
+            <ctrl:AlarmButton x:Name="AlarmListButton"
+                              Grid.Column="4"
+                              IconSize="35"/>
+            <ctrl:IconButton Grid.Column="5" Click="MinimizeWindow"/>
+            <ctrl:IconButton Grid.Column="6" Icon="{DynamicResource Geom.Close}" Click="CloseWindow"/>
+            <Border Grid.Column="0" Grid.ColumnSpan="7" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1"/>
+        </ctrl:OpacityAdjustableStatusGrid>
+        <!--#endregion-->
+        <ctrl:BasicProgressBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" TextBlockVisibility="Collapsed"
+                                TextBlockMargin="10 0 0 0" TextBlockHorizontalAlignment="Left" TextBlockVerticalAlignment="Center"
+                                Value="{Binding ProgressValue, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}" 
+                                Tag="{Binding Status, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"/>
+
+        <ContentControl x:Name="MainButtonControl"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Content="{Binding MainButtonContent, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"/>
+
+        <ContentControl x:Name="SubViewControl"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Grid.RowSpan="2"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Content="{Binding SubViewContent, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"/>
+
+        <ctrl:AlarmListPopup Grid.Column="1"
+                             Grid.Row="1"
+                             Grid.RowSpan="3"
+                             Panel.ZIndex="1500"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Margin="0,12,176,0"
+                             Visibility="{Binding IsChecked, ElementName=AlarmListButton, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             ItemsSource="{Binding AlarmItemsSource, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                             Command="{Binding AlarmListClearCommand, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"/>
+
+        <ctrl:BasicPopup Grid.Column="0"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="3"
+                        Panel.ZIndex="500"
+                        Visibility="{Binding PopupVisibility, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        AlarmType="{Binding AlarmType, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        IsSingleButton="{Binding IsSingleButton, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        PopupContent="{Binding PopupContent, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        Command="{Binding PopupResponseCommand, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        CmdParBtnLeft="{Binding PopupLeftCommandParameter, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        CmdParBtnRight="{Binding PopupRightCommandParameter, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        PopupWidth="{Binding PopupWidth, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        PopupHeight="{Binding PopupHeight, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        ButtonWidth="{Binding PopupButtonWidth, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        ButtonHeight="{Binding PopupButtonHeight, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        TitleFontSize="{Binding PopupTitleFontSize, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        ContentFontSize="{Binding PopupContentFontSize, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        ButtonSpacing="{Binding PopupButtonSpacing, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        AccentHeight="{Binding PopupAccentHeight, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        Background="{Binding PopupBackground, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        Foreground="{Binding PopupForeground, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        OverlayBackground="{Binding PopupOverlayBackground, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        OverlayWidth="{Binding PopupOverlayWidth, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                        OverlayHeight="{Binding PopupOverlayHeight, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"/>
+
+        <ctrl:EmergencyToggleButton Grid.Column="2"
+                                    Grid.Row="2"
+                                    Panel.ZIndex="1000"
+                                    ContentHeight="40"
+                                    ContentMargin="10 0 0 0"
+                                    Command="{Binding EmergencyCommand, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                                    CheckedCommandParameter="{Binding EmergencyCommandParameter, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"
+                                    UncheckedCommandParameter="{Binding EmergencyResetCommandParameter, RelativeSource={RelativeSource AncestorType={x:Type local:BaseView}}}"/>
+    </Grid>
+</UserControl>
+
+
+

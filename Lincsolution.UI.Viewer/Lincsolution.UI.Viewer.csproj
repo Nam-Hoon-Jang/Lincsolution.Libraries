@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
+	<AssemblyName>Lincsolution.UI.Viewer</AssemblyName>
+	<RootNamespace>Lincsolution.UI.Viewer</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsPackable>true</IsPackable>
+    <PackageId>Lincsolution.UI.Viewer</PackageId>
+    <Version>0.1.1</Version>
+    <Authors>Lincsolution</Authors>
+    <Description>Lincsolution WPF 3D Viewer.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="4.9.3" />
+    <PackageReference Include="OpenTK.GLControl" Version="4.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lincsolution.Core.Rendering\Lincsolution.Core.Rendering.csproj" />
+  </ItemGroup>
+
+</Project>

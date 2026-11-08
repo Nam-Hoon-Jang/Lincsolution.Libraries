@@ -1,0 +1,132 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Lincsolution.UI"
+                    xmlns:control="clr-namespace:Lincsolution.UI.Controls;assembly=Lincsolution.UI.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Lincsolution.UI.Resources;component/Themes/Light.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="BaseSubViewTabRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource Inter}"/>
+        <Setter Property="FontSize" Value="{Binding ButtonFontSize, RelativeSource={RelativeSource AncestorType={x:Type local:BaseSubView}}}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="ButtonBorder"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="{Binding HighlightBorderThickness, RelativeSource={RelativeSource AncestorType={x:Type local:BaseSubView}}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.SelectedForeground}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="{Binding HighlightBorderThickness, RelativeSource={RelativeSource AncestorType={x:Type local:BaseSubView}}}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="{Binding HighlightBorderThickness, RelativeSource={RelativeSource AncestorType={x:Type local:BaseSubView}}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.SelectedForeground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:BaseSubView}">
+        <Setter Property="Width" Value="1640"/>
+        <Setter Property="Height" Value="980"/>
+        <Setter Property="ButtonWidth" Value="100"/>
+        <Setter Property="ButtonFontSize" Value="20"/>
+        <Setter Property="UseButton1" Value="True"/>
+        <Setter Property="UseButton2" Value="True"/>
+        <Setter Property="UseButton3" Value="True"/>
+        <Setter Property="ButtonContentHorizontalAlignment" Value="Center"/>
+        <Setter Property="ButtonContentVerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:BaseSubView}">
+                    <Grid Background="{DynamicResource Brush.MainBackground}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{TemplateBinding TitleHeight}"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Background="{DynamicResource Brush.MainBackground}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding ButtonSpacing, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <ColumnDefinition Width="{TemplateBinding ButtonWidth}"/>
+                                <ColumnDefinition Width="{Binding ButtonSpacing, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <ColumnDefinition Width="{TemplateBinding ButtonWidth}"/>
+                                <ColumnDefinition Width="{Binding ButtonSpacing, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <ColumnDefinition Width="{TemplateBinding ButtonWidth}"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <control:BorderHighlightRadioButton Grid.Column="1"
+                                                                GroupName="{TemplateBinding ButtonGroupName}"
+                                                                FontSize="{TemplateBinding ButtonFontSize}"
+                                                                Content="{TemplateBinding Button1Content}"
+                                                                ContentHorizontalAlignment="{TemplateBinding ButtonContentHorizontalAlignment}"
+                                                                ContentVerticalAlignment="{TemplateBinding ButtonContentVerticalAlignment}"
+                                                                ContentMargin="{TemplateBinding ButtonContentMargin}"
+                                                                Tag="{TemplateBinding UseButton1}"
+                                                                IsEnabled="{TemplateBinding IsButton1Enabled}"
+                                                                IsChecked="{Binding IsButton1Checked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                                Command="{TemplateBinding Command}"
+                                                                CommandParameter="{TemplateBinding Button1CommandParameter}"/>
+                            <control:BorderHighlightRadioButton Grid.Column="3"
+                                                                GroupName="{TemplateBinding ButtonGroupName}"
+                                                                FontSize="{TemplateBinding ButtonFontSize}"
+                                                                Content="{TemplateBinding Button2Content}"
+                                                                ContentHorizontalAlignment="{TemplateBinding ButtonContentHorizontalAlignment}"
+                                                                ContentVerticalAlignment="{TemplateBinding ButtonContentVerticalAlignment}"
+                                                                ContentMargin="{TemplateBinding ButtonContentMargin}"
+                                                                Tag="{TemplateBinding UseButton2}"
+                                                                IsEnabled="{TemplateBinding IsButton2Enabled}"
+                                                                IsChecked="{Binding IsButton2Checked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                                Command="{TemplateBinding Command}"
+                                                                CommandParameter="{TemplateBinding Button2CommandParameter}"/>
+                            <control:BorderHighlightRadioButton Grid.Column="5"
+                                                                GroupName="{TemplateBinding ButtonGroupName}"
+                                                                FontSize="{TemplateBinding ButtonFontSize}"
+                                                                Content="{TemplateBinding Button3Content}"
+                                                                ContentHorizontalAlignment="{TemplateBinding ButtonContentHorizontalAlignment}"
+                                                                ContentVerticalAlignment="{TemplateBinding ButtonContentVerticalAlignment}"
+                                                                ContentMargin="{TemplateBinding ButtonContentMargin}"
+                                                                Tag="{TemplateBinding UseButton3}"
+                                                                IsEnabled="{TemplateBinding IsButton3Enabled}"
+                                                                IsChecked="{Binding IsButton3Checked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                                Command="{TemplateBinding Command}"
+                                                                CommandParameter="{TemplateBinding Button3CommandParameter}"/>
+                        </Grid>
+
+                        <ContentPresenter Grid.Row="1"
+                                          Content="{TemplateBinding ChildContent}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

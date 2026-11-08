@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls"
+                    xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base">
+    <Style TargetType="{x:Type controls:AlarmLabel}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.StatusIdle_Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.StatusIdle}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.StatusIdle}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Tag" Value="{x:Static base:AlarmType.INFO}"/>
+        <Setter Property="Content" Value="Info"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="IconImage" Value="{DynamicResource Icon.Info}"/>
+        <Setter Property="IconSize" Value="15"/>
+        <Setter Property="IconLeftPos" Value="8"/>
+        <Setter Property="TextBlockLeftPos" Value="28"/>
+        <Setter Property="TextBlockWidth" Value="66"/>
+        <Setter Property="TextBlockHeight" Value="20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AlarmLabel}">
+                    <Grid>
+                        <Border x:Name="Border_Label" Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"/>
+                        <Image x:Name="Image_Label" Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Source="{TemplateBinding IconImage}">
+                            <Image.RenderTransform>
+                                <TranslateTransform X="{Binding IconLeftPos, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <TextBlock x:Name="Text_Label" Width="{TemplateBinding TextBlockWidth}" Height="{TemplateBinding TextBlockHeight}"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Text="{TemplateBinding Content}" TextAlignment="Left"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   FontSize="{TemplateBinding FontSize}">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform X="{Binding TextBlockLeftPos, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="{x:Static base:AlarmType.INFO}">
+                            <Setter TargetName="Image_Label" Property="Source" Value="{DynamicResource Icon.Info}"/>
+                            <Setter TargetName="Text_Label" Property="Text" Value="Info"/>
+                            <Setter TargetName="Text_Label" Property="Foreground" Value="{DynamicResource Brush.StatusIdle}"/>
+                            <Setter TargetName="Border_Label" Property="Background" Value="{DynamicResource Brush.StatusIdle_Background}"/>
+                            <Setter TargetName="Border_Label" Property="BorderBrush" Value="{DynamicResource Brush.StatusIdle}"/>
+                        </Trigger>
+                        <Trigger Property="Tag" Value="{x:Static base:AlarmType.WARNING}">
+                            <Setter TargetName="Image_Label" Property="Source" Value="{DynamicResource Icon.Warning}"/>
+                            <Setter TargetName="Text_Label" Property="Text" Value="Warning"/>
+                            <Setter TargetName="Text_Label" Property="Foreground" Value="{DynamicResource Brush.Warning}"/>
+                            <Setter TargetName="Border_Label" Property="Background" Value="{DynamicResource Brush.WarningLowOpacity}"/>
+                            <Setter TargetName="Border_Label" Property="BorderBrush" Value="{DynamicResource Brush.Warning}"/>
+                        </Trigger>
+                        <Trigger Property="Tag" Value="{x:Static base:AlarmType.ERROR}">
+                            <Setter TargetName="Image_Label" Property="Source" Value="{DynamicResource Icon.Error}"/>
+                            <Setter TargetName="Text_Label" Property="Text" Value="Error"/>
+                            <Setter TargetName="Text_Label" Property="Foreground" Value="{DynamicResource Brush.Error}"/>
+                            <Setter TargetName="Border_Label" Property="Background" Value="{DynamicResource Brush.ErrorLowOpacity}"/>
+                            <Setter TargetName="Border_Label" Property="BorderBrush" Value="{DynamicResource Brush.Error}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

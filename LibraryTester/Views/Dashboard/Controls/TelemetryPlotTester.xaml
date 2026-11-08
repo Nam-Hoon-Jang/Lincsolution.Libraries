@@ -1,0 +1,42 @@
+<UserControl x:Class="LibraryTester.Views.Dashboard.Controls.TelemetryPlotTester"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Lincsolution.UI.Controls;assembly=Lincsolution.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="800" Loaded="OnLoaded" Unloaded="OnUnloaded">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock"><Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/></Style>
+        <Style TargetType="Button"><Setter Property="Padding" Value="12,6"/><Setter Property="Margin" Value="0,0,8,6"/></Style>
+        <Style TargetType="TextBox"><Setter Property="Padding" Value="6,4"/></Style>
+    </UserControl.Resources>
+    <Grid Margin="20" Background="{DynamicResource Brush.MainBackground}">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,12">
+            <TextBlock Text="Telemetry Plot" FontSize="24" FontWeight="SemiBold"/>
+            <TextBlock Text="센서를 체크하여 공통 경과 시간축에서 비교합니다. 긴 기록은 피크·누락을 남긴 표시용 데이터로 축약합니다." TextWrapping="Wrap"/>
+        </StackPanel>
+        <WrapPanel Grid.Row="1">
+            <Button Content="DB 파일 열기" Click="OnOpen"/>
+            <Button Content="최근 파일 목록" Click="OnRecent"/>
+            <ComboBox x:Name="RecentFiles" Width="300" DisplayMemberPath="Name" SelectionChanged="OnRecentSelected" Margin="0,0,8,6" AutomationProperties.Name="최근 DB 파일"/>
+            <TextBlock x:Name="SessionText" VerticalAlignment="Center" Margin="0,0,0,6" Text="파일을 선택하세요."/>
+        </WrapPanel>
+        <TextBox x:Name="PathBox" Grid.Row="2" IsReadOnly="True" Margin="0,0,0,10" AutomationProperties.Name="Plot DB 경로"/>
+        <WrapPanel Grid.Row="3" x:Name="QueryPanel" IsEnabled="False">
+            <TextBlock Text="경과 초" VerticalAlignment="Center" Margin="0,0,6,6"/>
+            <TextBox x:Name="FromBox" Width="85" Text="0" Margin="0,0,4,6" AutomationProperties.Name="Plot 시작 초"/>
+            <TextBlock Text="~" VerticalAlignment="Center" Margin="0,0,4,6"/>
+            <TextBox x:Name="ToBox" Width="85" Text="60" Margin="0,0,8,6" AutomationProperties.Name="Plot 종료 초"/>
+            <Button Content="범위 적용" Click="OnApply"/><Button Content="전체 시간" Click="OnFullRange"/>
+            <Button Content="전체 선택" Click="OnSelectAll"/><Button Content="선택 해제" Click="OnClearSelection"/>
+            <CheckBox Content="센서별 0~1 정규화" IsChecked="{Binding NormalizeSeries,ElementName=Plot,Mode=TwoWay}" VerticalAlignment="Center" Margin="0,0,12,6" Foreground="{DynamicResource Brush.ForegroundNormal}"/>
+            <Button Content="조회 취소" Click="OnCancel"/>
+        </WrapPanel>
+        <c:TimeSeriesPlot x:Name="Plot" Grid.Row="4" Title="센서 비교 · 공통 시간축" SelectorWidth="225" EmptyText="센서를 선택하면 조회 후 표시합니다."/>
+        <StackPanel Grid.Row="5" Margin="0,8,0,0">
+            <TextBlock x:Name="StatusText" Text="대기" TextWrapping="Wrap"/>
+            <TextBlock Text="최대 100센서 · 전체 표시 120,000점 이하 · 자세히 보려면 시간 범위를 좁히세요. 값/단위가 다르면 정규화를 사용할 수 있습니다."
+                       FontSize="12" TextWrapping="Wrap" Margin="0,4,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

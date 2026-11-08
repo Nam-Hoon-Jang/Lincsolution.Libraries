@@ -1,0 +1,191 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls"
+                    xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base"
+                    xmlns:alarms="clr-namespace:Lincsolution.Core.Base.Alarms;assembly=Lincsolution.Core.Base">
+
+    <Style x:Key="AlarmListClearButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border_Button"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.SelectedForeground}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border_Button" Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AlarmListItemButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border_Button"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border_Button" Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter TargetName="Border_Button" Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border_Button" Property="Background" Value="{DynamicResource Brush.SelectedBackgroundHighOpacity}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:AlarmListPopup}">
+        <Setter Property="Width" Value="380"/>
+        <Setter Property="Height" Value="350"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AlarmListPopup}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ClipToBounds="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{Binding HeaderHeight, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="120"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="1"
+                                        Tag="Clear"
+                                        Content="{TemplateBinding ClearContent}"
+                                        Command="{TemplateBinding Command}"
+                                        CommandParameter="{TemplateBinding ClearCommandParameter}"
+                                        Style="{StaticResource AlarmListClearButtonStyle}"/>
+                                <Border Grid.ColumnSpan="2"
+                                        VerticalAlignment="Bottom"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="0,0,0,1"
+                                        IsHitTestVisible="False"/>
+                            </Grid>
+
+                            <ListView x:Name="PART_ContentList"
+                                      Grid.Row="1"
+                                      ItemsSource="{TemplateBinding ItemsSource}"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      VirtualizingPanel.IsVirtualizing="True"
+                                      VirtualizingPanel.VirtualizationMode="Recycling">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Margin" Value="0"/>
+                                        <Setter Property="Focusable" Value="False"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Tag="AlarmItem"
+                                                Height="{Binding ItemHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:AlarmListPopup}}}"
+                                                Style="{StaticResource AlarmListItemButtonStyle}">
+                                            <Grid Margin="20,5,12,5">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="110"/>
+                                                </Grid.ColumnDefinitions>
+                                                <controls:AlarmLabel x:Name="AlarmTypeLabel"
+                                                                      Grid.Row="0"
+                                                                      Width="100"
+                                                                      Height="24"
+                                                                      HorizontalAlignment="Left"
+                                                                      VerticalAlignment="Center"
+                                                                      Content="{Binding Severity}"
+                                                                      Tag="{x:Static base:AlarmType.INFO}"
+                                                                      IconSize="12"
+                                                                      IconLeftPos="7"
+                                                                      TextBlockLeftPos="25"
+                                                                      TextBlockWidth="68"
+                                                                      TextBlockHeight="18"
+                                                                      FontSize="11"
+                                                                      CornerRadius="12"/>
+                                                <TextBlock Grid.Row="1"
+                                                           Text="{Binding Message}"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Grid.Column="1"
+                                                           Grid.RowSpan="2"
+                                                           Text="{Binding OccurredAt}"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="12"
+                                                           TextWrapping="Wrap"
+                                                           TextAlignment="Left"/>
+                                            </Grid>
+                                        </Button>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Severity}" Value="{x:Static alarms:AlarmSeverity.Warning}">
+                                            <Setter TargetName="AlarmTypeLabel" Property="Tag" Value="{x:Static base:AlarmType.WARNING}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Severity}" Value="{x:Static alarms:AlarmSeverity.Error}">
+                                            <Setter TargetName="AlarmTypeLabel" Property="Tag" Value="{x:Static base:AlarmType.ERROR}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Severity}" Value="{x:Static alarms:AlarmSeverity.Critical}">
+                                            <Setter TargetName="AlarmTypeLabel" Property="Tag" Value="{x:Static base:AlarmType.ERROR}"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="LibraryTester.Views.Dashboard.Controls.Preset"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c="clr-namespace:Lincsolution.UI.Controls;assembly=Lincsolution.UI.Controls"
+             xmlns:local="clr-namespace:LibraryTester.Views.Dashboard.Controls"
+             mc:Ignorable="d" Background="{DynamicResource Brush.MainBackground}"
+             Width="1640" Height="980">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+            
+    </Grid>
+</UserControl>

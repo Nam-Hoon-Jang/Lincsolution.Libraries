@@ -1,0 +1,26 @@
+<UserControl x:Class="LibraryTester.ViewerTestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewer="clr-namespace:Lincsolution.UI.Viewer;assembly=Lincsolution.UI.Viewer"
+             Width="800" Height="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <viewer:ModelViewerControl x:Name="ModelViewer" Grid.Column="0" Grid.ColumnSpan="3"
+                                   Model="{Binding ViewerModel, Mode=OneWay}"
+                                   IsLoading="{Binding IsViewerLoading, Mode=OneWay}"
+                                   LoadingProgress="{Binding ViewerLoadingProgress, Mode=OneWay}"/>
+        <Button Grid.Column="2" Click="Button_Click" Content="3D Open" Grid.Row="1"
+                IsEnabled="{Binding CanEditViewer}"/>
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="3" Text="{Binding ViewerError}"
+                   Foreground="Red" TextWrapping="Wrap" FontSize="14"/>
+    </Grid>
+</UserControl>

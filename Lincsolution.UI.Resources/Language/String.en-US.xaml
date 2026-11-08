@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <s:String x:Key="String.Idle">Idle</s:String>
+    <s:String x:Key="String.Busy">Busy</s:String>
+    <s:String x:Key="String.Ready">Ready</s:String>
+    <s:String x:Key="String.Build">Build</s:String>
+    <s:String x:Key="String.Pause">Pause</s:String>
+    <s:String x:Key="String.Done">Done</s:String>
+    <s:String x:Key="String.Stop">Stop</s:String>
+    <s:String x:Key="String.Warning">Warning</s:String>
+    <s:String x:Key="String.Error">Error</s:String>
+
+    <s:String x:Key="String.Dashboard">Dashboard</s:String>
+    <s:String x:Key="String.Monitoring">Monitoring</s:String>
+    <s:String x:Key="String.Control">Control</s:String>
+    <s:String x:Key="String.LogList">LogList</s:String>
+    <s:String x:Key="String.BuildParameter">BuildParameter</s:String>
+    <s:String x:Key="String.Preference">Preference</s:String>
+    <s:String x:Key="String.Light">Light</s:String>
+    <s:String x:Key="String.Dark">Dark</s:String>
+    <s:String x:Key="String.Status">Status</s:String>
+    <s:String x:Key="String.Emergency">Emergency Stop</s:String>
+    <s:String x:Key="String.Emergency.NewLine">Emergency&#10;Stop</s:String>
+
+    <s:String x:Key="String.Alarm.Information">Information</s:String>
+    <s:String x:Key="String.Alarm.Warning">Warning</s:String>
+    <s:String x:Key="String.Alarm.Error">Error</s:String>
+    <s:String x:Key="String.Popup.OK">OK</s:String>
+    <s:String x:Key="String.Popup.Yes">Yes</s:String>
+    <s:String x:Key="String.Popup.No">No</s:String>
+</ResourceDictionary>

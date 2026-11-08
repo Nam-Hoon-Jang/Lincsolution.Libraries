@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+	<LangVersion>7.3</LangVersion>
+    <Platforms>AnyCPU</Platforms>
+    <AssemblyName>Lincsolution.Core.Base</AssemblyName>
+    <RootNamespace>Lincsolution.Core.Base</RootNamespace>
+	<IsPackable>true</IsPackable>
+	<PackageId>Lincsolution.Core.Base</PackageId>
+	<Version>0.1.1</Version>
+	<Authors>Lincsolution</Authors>
+	<Description>Lincsolution Core Base Library</Description>
+  </PropertyGroup>
+
+</Project>

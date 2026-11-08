@@ -1,0 +1,170 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Pen x:Key="Pen.ProgressingIdle" Brush="{DynamicResource Brush.StatusIdle}" Thickness="16" StartLineCap="Round" EndLineCap="Round" DashCap="Round" LineJoin="Miter" MiterLimit="1">
+        <Pen.DashStyle>
+            <DashStyle Offset="0" Dashes="7.875 62.5" />
+        </Pen.DashStyle>
+    </Pen>
+    <Pen x:Key="Pen.BusyWarning" Brush="{DynamicResource Brush.Warning}" Thickness="16" StartLineCap="Round" EndLineCap="Round" DashCap="Round" LineJoin="Miter" MiterLimit="1">
+        <Pen.DashStyle>
+            <DashStyle Offset="0" Dashes="7.875 62.5" />
+        </Pen.DashStyle>
+    </Pen>
+    
+    <DrawingImage x:Key="Icon.StatusIdle">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L24,0L24,24L0,24z">
+                <DrawingGroup Transform="1,0,0,1,0,-119.271" ClipGeometry="F0M0,119.271L24,119.271 24,143.271 0,143.271z">
+                    <GeometryDrawing Brush="{DynamicResource Brush.StatusIdle}" Geometry="F1M22,131.271A10,10,0,1,1,12,121.271A10,10,0,0,1,22,131.271" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.ForegroundNormal}" Geometry="F1M12,122.771A8.5,8.5,0,1,1,3.5,131.271A8.51,8.51,0,0,1,12,122.771 M12,121.271A10,10,0,1,0,22,131.271A10,10,0,0,0,12,121.271" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.EmergencyIdle">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L72,0L72,72L0,72z">
+                <DrawingGroup Transform="1,0,0,1,-8440,-12140">
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{DynamicResource Brush.Error}" Geometry="F0M8499,12168C8499,12180.1503,8489.1503,12190,8477,12190C8464.8497,12190,8455,12180.1503,8455,12168C8455,12155.8497,8464.8497,12146,8477,12146C8489.1503,12146,8499,12155.8497,8499,12168z" />
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.9613,-0.2756,0.2756,0.9613,8456.137,12156.435">
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M12.2,33.1C11.7,32.9 11.1,32.8 10.6,32.6 10,32.3 9.6,31.6 9.9,31 10.2,30.4 10.9,30.1 11.5,30.3 13.2,31 15,31.3 16.8,31.3 22.8,31.3 28.2,27.5 30.3,21.9 30.5,21.3 31.3,20.9 31.9,21.2 32.5,21.4 32.9,22.2 32.6,22.8 30.2,29.4 23.8,33.9 16.8,33.9 15.3,33.7 13.7,33.5 12.2,33.1z M6.5,30C6.3,30 6.2,29.9 6,29.8 2.2,26.6 0,21.9 0,16.9 0,15.3 0.2,13.8 0.7,12.2 1.4,9.8 2.7,7.5 4.3,5.6 4.8,5.1 5.5,5 6.1,5.5 6.6,6 6.6,6.8 6.2,7.3 4.8,8.9 3.7,10.8 3.1,12.9 2.7,14.2 2.5,15.5 2.5,16.9 2.5,21.1 4.4,25.2 7.6,27.9 8.1,28.3 8.2,29.1 7.8,29.7 7.4,30 6.9,30.2 6.5,30z M32.1,18.5C31.6,18.3 31.2,17.8 31.2,17.3 31.2,17.2 31.2,17 31.2,16.9 31.2,10.5 26.9,4.8 20.8,3.1 19.5,2.7 18.2,2.5 16.8,2.5 14.3,2.5 11.8,3.2 9.6,4.4 9.1,4.8 8.3,4.5 8,3.9 7.7,3.3 7.9,2.6 8.5,2.2 11,0.8 13.9,0 16.9,0 18.5,0 20,0.2 21.6,0.7 28.8,2.8 33.8,9.4 33.8,16.9 33.8,17.1 33.8,17.2 33.8,17.4 33.8,18.1 33.2,18.6 32.5,18.6 32.3,18.6 32.2,18.6 32.1,18.5z" />
+                        </DrawingGroup>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="1,0,0,1,8466,12157">
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{DynamicResource Brush.ErrorPressed}" Geometry="F1M11,22C4.9,22 0,17.1 0,11 0,4.9 4.9,0 11,0 17.1,0 22,4.9 22,11 22,17.1 17.1,22 11,22z M11,0.5C5.2,0.5 0.5,5.2 0.5,11 0.5,16.8 5.2,21.5 11,21.5 16.8,21.5 21.5,16.8 21.5,11 21.5,5.2 16.8,0.5 11,0.5z" />
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.EmergencyPressed">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L72,0L72,72L0,72z">
+                <DrawingGroup Transform="1,0,0,1,-8440,-12140">
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="{DynamicResource Brush.ErrorPressed}" Geometry="F0M8499,12168C8499,12180.1503,8489.1503,12190,8477,12190C8464.8497,12190,8455,12180.1503,8455,12168C8455,12155.8497,8464.8497,12146,8477,12146C8489.1503,12146,8499,12155.8497,8499,12168z" />
+                    </DrawingGroup>
+                    <DrawingGroup Transform="0.9613,-0.2756,0.2756,0.9613,8456.137,12156.435">
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M12.2,33.1C11.7,32.9 11.1,32.8 10.6,32.6 10,32.3 9.6,31.6 9.9,31 10.2,30.4 10.9,30.1 11.5,30.3 13.2,31 15,31.3 16.8,31.3 22.8,31.3 28.2,27.5 30.3,21.9 30.5,21.3 31.3,20.9 31.9,21.2 32.5,21.4 32.9,22.2 32.6,22.8 30.2,29.4 23.8,33.9 16.8,33.9 15.3,33.7 13.7,33.5 12.2,33.1z M6.5,30C6.3,30 6.2,29.9 6,29.8 2.2,26.6 0,21.9 0,16.9 0,15.3 0.2,13.8 0.7,12.2 1.4,9.8 2.7,7.5 4.3,5.6 4.8,5.1 5.5,5 6.1,5.5 6.6,6 6.6,6.8 6.2,7.3 4.8,8.9 3.7,10.8 3.1,12.9 2.7,14.2 2.5,15.5 2.5,16.9 2.5,21.1 4.4,25.2 7.6,27.9 8.1,28.3 8.2,29.1 7.8,29.7 7.4,30 6.9,30.2 6.5,30z M32.1,18.5C31.6,18.3 31.2,17.8 31.2,17.3 31.2,17.2 31.2,17 31.2,16.9 31.2,10.5 26.9,4.8 20.8,3.1 19.5,2.7 18.2,2.5 16.8,2.5 14.3,2.5 11.8,3.2 9.6,4.4 9.1,4.8 8.3,4.5 8,3.9 7.7,3.3 7.9,2.6 8.5,2.2 11,0.8 13.9,0 16.9,0 18.5,0 20,0.2 21.6,0.7 28.8,2.8 33.8,9.4 33.8,16.9 33.8,17.1 33.8,17.2 33.8,17.4 33.8,18.1 33.2,18.6 32.5,18.6 32.3,18.6 32.2,18.6 32.1,18.5z" />
+                        </DrawingGroup>
+                    </DrawingGroup>
+                    <DrawingGroup Transform="1,0,0,1,8466,12157">
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{DynamicResource Brush.Error}" Geometry="F1M11,22C4.9,22 0,17.1 0,11 0,4.9 4.9,0 11,0 17.1,0 22,4.9 22,11 22,17.1 17.1,22 11,22z M11,0.5C5.2,0.5 0.5,5.2 0.5,11 0.5,16.8 5.2,21.5 11,21.5 16.8,21.5 21.5,16.8 21.5,11 21.5,5.2 16.8,0.5 11,0.5z" />
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Idle">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L48,0L48,48L0,48z">
+                <GeometryDrawing Brush="{DynamicResource Brush.StatusIdle}" Geometry="F0M36,24C36,30.6274,30.6274,36,24,36C17.3726,36,12,30.6274,12,24C12,17.3726,17.3726,12,24,12C30.6274,12,36,17.3726,36,24z" />
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M23.999,26.75C23.8001,26.75 23.6094,26.671 23.4687,26.5303 23.3281,26.3897 23.249,26.1989 23.249,26L23.249,19.12C23.249,18.9211 23.3281,18.7303 23.4687,18.5897 23.6094,18.449 23.8001,18.37 23.999,18.37 24.1979,18.37 24.3887,18.449 24.5294,18.5897 24.67,18.7303 24.749,18.9211 24.749,19.12L24.749,26C24.749,26.1989 24.67,26.3897 24.5294,26.5303 24.3887,26.671 24.1979,26.75 23.999,26.75z" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F0M24.749,28.25C24.749,28.3983 24.705,28.5433 24.6226,28.6667 24.5402,28.79 24.4231,28.8861 24.286,28.9429 24.149,28.9997 23.9982,29.0145 23.8527,28.9856 23.7072,28.9566 23.5736,28.8852 23.4687,28.7803 23.3638,28.6754 23.2924,28.5418 23.2634,28.3963 23.2345,28.2508 23.2493,28.1 23.3061,27.963 23.3629,27.8259 23.459,27.7088 23.5823,27.6264 23.7057,27.544 23.8507,27.5 23.999,27.5 24.1979,27.5 24.3887,27.579 24.5293,27.7197 24.67,27.8603 24.749,28.0511 24.749,28.25z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Ready">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L48,0L48,48L0,48z">
+                <GeometryDrawing Brush="{DynamicResource Brush.StatusReady}" Geometry="F0M36,24C36,30.6274,30.6274,36,24,36C17.3726,36,12,30.6274,12,24C12,17.3726,17.3726,12,24,12C30.6274,12,36,17.3726,36,24z" />
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M23.999,26.75C23.8001,26.75 23.6094,26.671 23.4687,26.5303 23.3281,26.3897 23.249,26.1989 23.249,26L23.249,19.12C23.249,18.9211 23.3281,18.7303 23.4687,18.5897 23.6094,18.449 23.8001,18.37 23.999,18.37 24.1979,18.37 24.3887,18.449 24.5294,18.5897 24.67,18.7303 24.749,18.9211 24.749,19.12L24.749,26C24.749,26.1989 24.67,26.3897 24.5294,26.5303 24.3887,26.671 24.1979,26.75 23.999,26.75z" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F0M24.749,28.25C24.749,28.3983 24.705,28.5433 24.6226,28.6667 24.5402,28.79 24.4231,28.8861 24.286,28.9429 24.149,28.9997 23.9982,29.0145 23.8527,28.9856 23.7072,28.9566 23.5736,28.8852 23.4687,28.7803 23.3638,28.6754 23.2924,28.5418 23.2634,28.3963 23.2345,28.2508 23.2493,28.1 23.3061,27.963 23.3629,27.8259 23.459,27.7088 23.5823,27.6264 23.7057,27.544 23.8507,27.5 23.999,27.5 24.1979,27.5 24.3887,27.579 24.5293,27.7197 24.67,27.8603 24.749,28.0511 24.749,28.25z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Progressing">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L160,0L160,160L0,160z">
+                <GeometryDrawing Pen="{StaticResource Pen.ProgressingIdle}" Geometry="F1M80,152C119.765,152 152,119.765 152,80 152,40.2355 119.765,8 80,8 40.2355,8 8,40.2355 8,80 8,119.765 40.2355,152 80,152z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Busy">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L160,0L160,160L0,160z">
+                <GeometryDrawing Pen="{StaticResource Pen.BusyWarning}" Geometry="F1M80,152C119.765,152 152,119.765 152,80 152,40.2355 119.765,8 80,8 40.2355,8 8,40.2355 8,80 8,119.765 40.2355,152 80,152z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Done">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L23.999,0L23.999,24L0,24z">
+                <DrawingGroup Transform="1,0,0,1,-292.561,-61.32" ClipGeometry="F0M292.561,61.32L316.56,61.32 316.56,85.32 292.561,85.32z">
+                    <GeometryDrawing Brush="{DynamicResource Brush.StatusDone}" Geometry="F1M303.51,78.2A1.876,1.876,0,0,1,302.185,77.648L299.085,74.548A0.75,0.75,0,1,1,300.146,73.487L303.246,76.587A0.326,0.326,0,0,0,303.7,76.628L309.22,71.108A0.75,0.75,0,0,1,310.281,72.168L304.76,77.689A1.759,1.759,0,0,1,303.511,78.2" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.StatusDone}" Geometry="F1M304.561,64.82A8.5,8.5,0,1,1,296.061,73.32A8.51,8.51,0,0,1,304.561,64.82 M304.561,63.32A10,10,0,1,0,314.561,73.32A10,10,0,0,0,304.561,63.32" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Stop">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L23.999,0L23.999,24L0,24z">
+                <DrawingGroup Transform="1,0,0,1,-146.111,-30.003" ClipGeometry="F0M146.111,30.003L170.11,30.003 170.11,54.003 146.111,54.003z">
+                    <GeometryDrawing Brush="{DynamicResource Brush.StatusError}" Geometry="F1M158.111,32A10,10,0,1,0,168.111,42A10,10,0,0,0,158.111,32 M158.111,50.5A8.5,8.5,0,1,1,166.611,42A8.51,8.51,0,0,1,158.111,50.5" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.StatusError}" Geometry="F1M159.146,41.978L162.046,39.078A0.75,0.75,0,0,0,160.985,38.018L158.085,40.918 155.185,38.018A0.75,0.75,0,0,0,154.124,39.078L157.024,41.978 154.079,44.923A0.75,0.75,0,1,0,155.139,45.984L158.084,43.039 161.03,45.984A0.75,0.75,0,0,0,162.09,44.923z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.ErrorBuild">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L48,0L48,48L0,48z">
+                <GeometryDrawing Brush="{DynamicResource Brush.StatusError}" Geometry="F0M36,24C36,30.6274,30.6274,36,24,36C17.3726,36,12,30.6274,12,24C12,17.3726,17.3726,12,24,12C30.6274,12,36,17.3726,36,24z" />
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M23.999,26.75C23.8001,26.75 23.6094,26.671 23.4687,26.5303 23.3281,26.3897 23.249,26.1989 23.249,26L23.249,19.12C23.249,18.9211 23.3281,18.7303 23.4687,18.5897 23.6094,18.449 23.8001,18.37 23.999,18.37 24.1979,18.37 24.3887,18.449 24.5294,18.5897 24.67,18.7303 24.749,18.9211 24.749,19.12L24.749,26C24.749,26.1989 24.67,26.3897 24.5294,26.5303 24.3887,26.671 24.1979,26.75 23.999,26.75z" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F0M24.749,28.25C24.749,28.3983 24.705,28.5433 24.6226,28.6667 24.5402,28.79 24.4231,28.8861 24.286,28.9429 24.149,28.9997 23.9982,29.0145 23.8527,28.9856 23.7072,28.9566 23.5736,28.8852 23.4687,28.7803 23.3638,28.6754 23.2924,28.5418 23.2634,28.3963 23.2345,28.2508 23.2493,28.1 23.3061,27.963 23.3629,27.8259 23.459,27.7088 23.5823,27.6264 23.7057,27.544 23.8507,27.5 23.999,27.5 24.1979,27.5 24.3887,27.579 24.5293,27.7197 24.67,27.8603 24.749,28.0511 24.749,28.25z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Info">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L48,0L48,48L0,48z">
+                <GeometryDrawing Brush="{DynamicResource Brush.IconStatusIdle}" Geometry="F1M24,48C37.2548,48 48,37.2548 48,24 48,10.7452 37.2548,0 24,0 10.7452,0 0,10.7452 0,24 0,37.2548 10.7452,48 24,48z" />
+                <GeometryDrawing Brush="{DynamicResource Brush.StatusIdle}" Geometry="F0M36,24C36,30.6274,30.6274,36,24,36C17.3726,36,12,30.6274,12,24C12,17.3726,17.3726,12,24,12C30.6274,12,36,17.3726,36,24z" />
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M23.999,26.75C23.8001,26.75 23.6094,26.671 23.4687,26.5303 23.3281,26.3897 23.249,26.1989 23.249,26L23.249,19.12C23.249,18.9211 23.3281,18.7303 23.4687,18.5897 23.6094,18.449 23.8001,18.37 23.999,18.37 24.1979,18.37 24.3887,18.449 24.5294,18.5897 24.67,18.7303 24.749,18.9211 24.749,19.12L24.749,26C24.749,26.1989 24.67,26.3897 24.5294,26.5303 24.3887,26.671 24.1979,26.75 23.999,26.75z" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F0M24.749,28.25C24.749,28.3983 24.705,28.5433 24.6226,28.6667 24.5402,28.79 24.4231,28.8861 24.286,28.9429 24.149,28.9997 23.9982,29.0145 23.8527,28.9856 23.7072,28.9566 23.5736,28.8852 23.4687,28.7803 23.3638,28.6754 23.2924,28.5418 23.2634,28.3963 23.2345,28.2508 23.2493,28.1 23.3061,27.963 23.3629,27.8259 23.459,27.7088 23.5823,27.6264 23.7057,27.544 23.8507,27.5 23.999,27.5 24.1979,27.5 24.3887,27.579 24.5293,27.7197 24.67,27.8603 24.749,28.0511 24.749,28.25z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Warning">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L48,0L48,48L0,48z">
+                <GeometryDrawing Brush="{DynamicResource Brush.IconStatusReady}" Geometry="F1M24,48C37.2548,48 48,37.2548 48,24 48,10.7452 37.2548,0 24,0 10.7452,0 0,10.7452 0,24 0,37.2548 10.7452,48 24,48z" />
+                <GeometryDrawing Brush="{DynamicResource Brush.StatusReady}" Geometry="F0M36,24C36,30.6274,30.6274,36,24,36C17.3726,36,12,30.6274,12,24C12,17.3726,17.3726,12,24,12C30.6274,12,36,17.3726,36,24z" />
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M23.999,26.75C23.8001,26.75 23.6094,26.671 23.4687,26.5303 23.3281,26.3897 23.249,26.1989 23.249,26L23.249,19.12C23.249,18.9211 23.3281,18.7303 23.4687,18.5897 23.6094,18.449 23.8001,18.37 23.999,18.37 24.1979,18.37 24.3887,18.449 24.5294,18.5897 24.67,18.7303 24.749,18.9211 24.749,19.12L24.749,26C24.749,26.1989 24.67,26.3897 24.5294,26.5303 24.3887,26.671 24.1979,26.75 23.999,26.75z" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F0M24.749,28.25C24.749,28.3983 24.705,28.5433 24.6226,28.6667 24.5402,28.79 24.4231,28.8861 24.286,28.9429 24.149,28.9997 23.9982,29.0145 23.8527,28.9856 23.7072,28.9566 23.5736,28.8852 23.4687,28.7803 23.3638,28.6754 23.2924,28.5418 23.2634,28.3963 23.2345,28.2508 23.2493,28.1 23.3061,27.963 23.3629,27.8259 23.459,27.7088 23.5823,27.6264 23.7057,27.544 23.8507,27.5 23.999,27.5 24.1979,27.5 24.3887,27.579 24.5293,27.7197 24.67,27.8603 24.749,28.0511 24.749,28.25z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <DrawingImage x:Key="Icon.Error">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="F0M0,0L48,0L48,48L0,48z">
+                <GeometryDrawing Brush="{DynamicResource Brush.IconStatusError}" Geometry="F1M24,48C37.2548,48 48,37.2548 48,24 48,10.7452 37.2548,0 24,0 10.7452,0 0,10.7452 0,24 0,37.2548 10.7452,48 24,48z" />
+                <GeometryDrawing Brush="{DynamicResource Brush.StatusError}" Geometry="F0M36,24C36,30.6274,30.6274,36,24,36C17.3726,36,12,30.6274,12,24C12,17.3726,17.3726,12,24,12C30.6274,12,36,17.3726,36,24z" />
+                <DrawingGroup>
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F1M23.999,26.75C23.8001,26.75 23.6094,26.671 23.4687,26.5303 23.3281,26.3897 23.249,26.1989 23.249,26L23.249,19.12C23.249,18.9211 23.3281,18.7303 23.4687,18.5897 23.6094,18.449 23.8001,18.37 23.999,18.37 24.1979,18.37 24.3887,18.449 24.5294,18.5897 24.67,18.7303 24.749,18.9211 24.749,19.12L24.749,26C24.749,26.1989 24.67,26.3897 24.5294,26.5303 24.3887,26.671 24.1979,26.75 23.999,26.75z" />
+                    <GeometryDrawing Brush="{DynamicResource Brush.White}" Geometry="F0M24.749,28.25C24.749,28.3983 24.705,28.5433 24.6226,28.6667 24.5402,28.79 24.4231,28.8861 24.286,28.9429 24.149,28.9997 23.9982,29.0145 23.8527,28.9856 23.7072,28.9566 23.5736,28.8852 23.4687,28.7803 23.3638,28.6754 23.2924,28.5418 23.2634,28.3963 23.2345,28.2508 23.2493,28.1 23.3061,27.963 23.3629,27.8259 23.459,27.7088 23.5823,27.6264 23.7057,27.544 23.8507,27.5 23.999,27.5 24.1979,27.5 24.3887,27.579 24.5293,27.7197 24.67,27.8603 24.749,28.0511 24.749,28.25z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+</ResourceDictionary>

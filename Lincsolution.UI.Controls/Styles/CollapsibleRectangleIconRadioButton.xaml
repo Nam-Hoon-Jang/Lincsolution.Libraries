@@ -1,0 +1,136 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls">
+
+
+
+    <Style TargetType="{x:Type controls:CollapsibleRectangleIconRadioButton}">
+        <Setter Property="GroupName" Value="MenuButton"/>
+        <Setter Property="Width" Value="280"/>
+        <Setter Property="Height" Value="88"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="6 0 0 0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.IdleForeground}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Tag" Value="{StaticResource Geom.Home}"/>
+        <Setter Property="Content" Value="Dashboard"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="IsCollapsed" Value="False"/>
+        <Setter Property="ExpandedWidth" Value="280"/>
+        <Setter Property="CollapsedWidth" Value="88"/>
+        <Setter Property="Icon" Value="{StaticResource Geom.Home}"/>
+        <Setter Property="IconSize" Value="36"/>
+        <Setter Property="IconFill" Value="{DynamicResource Brush.IdleForeground}"/>
+        <Setter Property="IconStroke" Value="{DynamicResource Brush.IdleForeground}"/>
+        <Setter Property="IconStrokeThickness" Value="0"/>
+        <Setter Property="IconExpandedHorizontalAlignment" Value="Left"/>
+        <Setter Property="IconExpandedVerticalAlignment" Value="Center"/>
+        <Setter Property="IconCollapsedHorizontalAlignment" Value="Center"/>
+        <Setter Property="IconCollapsedVerticalAlignment" Value="Center"/>
+        <Setter Property="IconExpandedMargin" Value="26 0 0 0"/>
+        <Setter Property="IconCollapsedMargin" Value="0"/>
+        <Setter Property="ContentWidth" Value="200"/>
+        <Setter Property="ContentHeight" Value="30"/>
+        <Setter Property="ContentExpandedMargin" Value="94 0 0 0"/>
+        <Setter Property="ContentCollapsedMargin" Value="0 0 0 10"/>
+        <Setter Property="ContentExpandedHorizontalAlignment" Value="Left"/>
+        <Setter Property="ContentExpandedVerticalAlignment" Value="Center"/>
+        <Setter Property="ContentCollapsedHorizontalAlignment" Value="Center"/>
+        <Setter Property="ContentCollapsedVerticalAlignment" Value="Bottom"/>
+        <Setter Property="ContentExpandedFontSize" Value="20"/>
+        <Setter Property="ContentCollapsedFontSize" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CollapsibleRectangleIconRadioButton}">
+                    <Grid x:Name="Grid_Button"
+                          Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                          Background="{TemplateBinding Background}">
+                        <Border x:Name="Border_Button"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="Transparent"/>
+                        <ContentPresenter x:Name="Content_Button"
+                                          Width="{TemplateBinding ContentWidth}" Height="{TemplateBinding ContentHeight}"
+                                          HorizontalAlignment="{TemplateBinding ContentExpandedHorizontalAlignment}" VerticalAlignment="{TemplateBinding ContentExpandedVerticalAlignment}"
+                                          Margin="{TemplateBinding ContentExpandedMargin}"/>
+                        <Path x:Name="Path_Button"
+                              Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}"
+                              HorizontalAlignment="{TemplateBinding IconExpandedHorizontalAlignment}"
+                              VerticalAlignment="{TemplateBinding IconExpandedVerticalAlignment}"
+                              Margin="{TemplateBinding IconExpandedMargin}"
+                              IsHitTestVisible="False"
+                              Stretch="Uniform"
+                              Stroke="{TemplateBinding IconStroke}"
+                              StrokeThickness="{TemplateBinding IconStrokeThickness}"
+                              Fill="{TemplateBinding IconFill}"
+                              Data="{TemplateBinding Icon}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- The Animation for Expand/Collapse Gets Triggerd by IsCollapsed Property Changes.
+                             The Event Codes are Already Implemented & Registered in CollapsibleRectangleIconRadioButton.cs-->
+                        <!-- 확대/축소 관련 애니메이션은 IsCollapsed 값 기반으로 트리거 되나, 
+                             관련 코드 구현은 CollapsibleRectangleIconRadioButton.cs에 작성되어 있음.-->
+                        <Trigger Property="IsCollapsed" Value="True">
+                            <Setter TargetName="Content_Button" Property="HorizontalAlignment" Value="{Binding ContentCollapsedHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Content_Button" Property="VerticalAlignment" Value="{Binding ContentCollapsedVerticalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Content_Button" Property="Margin" Value="{Binding ContentCollapsedMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Path_Button" Property="HorizontalAlignment" Value="{Binding IconCollapsedHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Path_Button" Property="VerticalAlignment" Value="{Binding IconCollapsedVerticalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Path_Button" Property="Margin" Value="{Binding IconCollapsedMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="FontSize" Value="{Binding ContentCollapsedFontSize, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                        <Trigger Property="IsCollapsed" Value="False">
+                            <Setter TargetName="Content_Button" Property="HorizontalAlignment" Value="{Binding ContentExpandedHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Content_Button" Property="VerticalAlignment" Value="{Binding ContentExpandedVerticalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Content_Button" Property="Margin" Value="{Binding ContentExpandedMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Path_Button" Property="HorizontalAlignment" Value="{Binding IconExpandedHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Path_Button" Property="VerticalAlignment" Value="{Binding IconExpandedVerticalAlignment, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="Path_Button" Property="Margin" Value="{Binding IconExpandedMargin, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="FontSize" Value="{Binding ContentExpandedFontSize, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource Brush.SelectedForeground}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.SelectedForeground}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsPressed" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.SelectedForeground}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsPressed" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{DynamicResource Brush.SelectedBackground}"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.SelectedForeground}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Brush.IdleForeground}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

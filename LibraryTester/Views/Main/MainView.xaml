@@ -1,0 +1,58 @@
+<Window x:Class="LibraryTester.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryTester"
+        xmlns:property="clr-namespace:LibraryTester.Property"
+        xmlns:basic="clr-namespace:Lincsolution.UI;assembly=Lincsolution.UI"
+        xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base"
+        xmlns:ctrl="clr-namespace:Lincsolution.UI.Controls;assembly=Lincsolution.UI.Controls"
+        xmlns:viewer="clr-namespace:Lincsolution.UI.Viewer;assembly=Lincsolution.UI.Viewer"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:DesignMainViewModel, IsDesignTimeCreatable=True}"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        ResizeMode="NoResize" AllowsTransparency="False"
+        Width="1920" Height="1080"
+        WindowState="Maximized">
+    <basic:BaseView Status="{Binding Shared.UiState, Mode=OneWay}"
+                    ResizableMainColumnWidth="280"
+                    ProgressValue="50"
+                    SubViewContent="{Binding CurrentViewModel}"
+                    PopupWidth="460"
+                    PopupHeight="340"
+                    PopupOverlayWidth="1920"
+                    PopupOverlayHeight="980"
+                    PopupAccentHeight="20"
+                    
+                    PopupCommand="{Binding Command}"
+                    PopupContent="{Binding PopupContent}"
+                    IsSingleButton="{Binding PopupIsSingleButton}"
+                    PopupVisibility="{Binding PopupVisibility}"
+                    AlarmType="{Binding AlarmType}"
+                    PopupLeftCommandParameter="{Binding CmdParBtnPopupLeft}"
+                    PopupRightCommandParameter="{Binding CmdParBtnPopupRight}">
+        <basic:BaseView.MainButtonContent>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="88"/>
+                    <RowDefinition Height="88"/>
+                    <RowDefinition Height="88"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Grid.RowSpan="4" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="0,1,1,0"/>
+                <ctrl:CollapsibleRectangleIconRadioButton Grid.Row="0" 
+                                                          Content="Sub View A"
+                                                          GroupName="MainMenu"
+                                                          Command="{Binding Command}"
+                                                          CommandParameter="{x:Static property:Enum+MainViewCommand.OpenDashboard}"/>
+                <ctrl:CollapsibleRectangleIconRadioButton Grid.Row="1" 
+                                                          GroupName="MainMenu"
+                                                          Icon="{DynamicResource Geom.Preference}"
+                                                          Content="Sub View B"
+                                                          Command="{Binding Command}"
+                                                          CommandParameter="{x:Static property:Enum+MainViewCommand.OpenPreference}"/>
+            </Grid>
+        </basic:BaseView.MainButtonContent>
+    </basic:BaseView>
+</Window>

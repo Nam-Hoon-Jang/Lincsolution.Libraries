@@ -1,0 +1,37 @@
+﻿<base:BaseApplication x:Class="LibraryTester.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LibraryTester"
+             xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base"
+             xmlns:vm="clr-namespace:LibraryTester">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:PreferenceViewModel}">
+                <local:PreferenceView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:DesignPreferenceViewModel}">
+                <local:PreferenceView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TestPreferenceViewModel}">
+                <local:PreferenceView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+                <local:DashboardView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:DesignDashboardViewModel}">
+                <local:DashboardView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TestDashboardViewModel}">
+                <local:DashboardView/>
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Themes/Generic.xaml"/>
+                <ResourceDictionary Source="/Lincsolution.UI;component/Themes/Generic.xaml"/>
+                <ResourceDictionary Source="/Lincsolution.UI.Resources;component/Themes/Light.xaml"/>
+                <ResourceDictionary Source="/Lincsolution.UI.Resources;component/Language/String.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</base:BaseApplication>
+

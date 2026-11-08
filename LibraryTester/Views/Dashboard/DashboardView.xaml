@@ -1,0 +1,58 @@
+﻿<ui:BaseSubView x:Class="LibraryTester.DashboardView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:ui="clr-namespace:Lincsolution.UI;assembly=Lincsolution.UI"
+                xmlns:c="clr-namespace:Lincsolution.UI.Controls;assembly=Lincsolution.UI.Controls"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:LibraryTester"
+                xmlns:property="clr-namespace:LibraryTester.Property"
+                xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base"
+                xmlns:dashboardControls="clr-namespace:LibraryTester.Views.Dashboard.Controls"
+                mc:Ignorable="d" 
+                d:DataContext="{d:DesignInstance Type=local:DesignDashboardViewModel, IsDesignTimeCreatable=True}"
+                UseButton1="True"
+                UseButton2="True"
+                UseButton3="True"
+                ButtonWidth="120"
+                ButtonGroupName="DashboardTitleButton"
+                Button1Content="Buttons"
+                Button2Content="Inputs"
+                Button3Content="Display"
+                IsButton1Checked="{Binding IsButton1Checked, Mode=TwoWay}"
+                IsButton2Checked="{Binding IsButton2Checked, Mode=TwoWay}"
+                IsButton3Checked="{Binding IsButton3Checked, Mode=TwoWay}"
+                IsButton1Enabled="True"
+                IsButton2Enabled="True"
+                IsButton3Enabled="True"
+                Command="{Binding Command}"
+                Button1CommandParameter="{x:Static property:Enum+DashboardViewCommand.OpenControlsA}"
+                Button2CommandParameter="{x:Static property:Enum+DashboardViewCommand.OpenControlsB}"
+                Button3CommandParameter="{x:Static property:Enum+DashboardViewCommand.OpenControlsC}"
+                >
+    <ui:BaseSubView.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </ui:BaseSubView.Resources>
+    <ui:BaseSubView.ChildContent>
+        <Grid>
+            <dashboardControls:ButtonControlTester
+                Visibility="{Binding IsButton1Checked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <dashboardControls:InputControlTester
+                Visibility="{Binding IsButton2Checked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <TabControl Visibility="{Binding IsButton3Checked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TabItem Header="Display Controls">
+                    <dashboardControls:DisplayControlTester/>
+                </TabItem>
+                <TabItem Header="Telemetry">
+                    <dashboardControls:TelemetryTester/>
+                </TabItem>
+                <TabItem Header="DB Viewer">
+                    <dashboardControls:TelemetryDbViewer/>
+                </TabItem>
+                <TabItem Header="Plot">
+                    <dashboardControls:TelemetryPlotTester/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </ui:BaseSubView.ChildContent>
+</ui:BaseSubView>

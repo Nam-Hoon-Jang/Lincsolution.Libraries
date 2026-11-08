@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU</Platforms>
+	<AssemblyName>Lincsolution.UI</AssemblyName>
+	<RootNamespace>Lincsolution.UI</RootNamespace>
+	<IsPackable>true</IsPackable>
+	<PackageId>Lincsolution.UI</PackageId>
+	<Version>0.1.1</Version>
+	<Authors>Lincsolution</Authors>
+	<Description>Lincsolution WPF UI library bundle.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lincsolution.UI.Base\Lincsolution.UI.Base.csproj" />
+    <ProjectReference Include="..\Lincsolution.UI.Resources\Lincsolution.UI.Resources.csproj" />
+	<ProjectReference Include="..\Lincsolution.UI.Controls\Lincsolution.UI.Controls.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,44 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Lincsolution.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/TabView.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Resources;component/Themes/Light.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Resources;component/Language/String.en-US.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/AlarmButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/AlarmLabel.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/AlarmListPopup.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicComboBox.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicProgressBar.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicRadioButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BorderHighlightRadioButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicTextBlock.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicTextBox.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicToggleButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/CollapsibleRectangleIconRadioButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/CoordinateMap.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/EllipseProgressBar.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/EmergencyToggleButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/IconButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/OpacityAdjustableStatusGrid.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/NumPad.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicPopup.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/StatusGrid.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/StatusLabel.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicLabel.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/ThemeToggleButton.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/ToggleButtonPanel.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/TextBoxPanel.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/PaginationControl.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicSlider.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicListView.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/BasicCheckBox.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/TextBoxButtonPanel.xaml"/>
+        <ResourceDictionary Source="/Lincsolution.UI.Controls;component/Styles/TimeSeriesPlot.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+ 
+</ResourceDictionary>
+

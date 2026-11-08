@@ -1,0 +1,153 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls"
+                    xmlns:base="clr-namespace:Lincsolution.UI.Base.Common;assembly=Lincsolution.UI.Base">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Lincsolution.UI.Resources;component/Animations/Storyboards.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style TargetType="{x:Type controls:BasicProgressBar}">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Height" Value="12"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.StatusIdle}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Setter Property="FontSize" Value="9"/>
+        <Setter Property="Minimum" Value="0"/>
+        <Setter Property="Maximum" Value="100"/>
+        <Setter Property="SmallChange" Value="0.1"/>
+        <Setter Property="Tag" Value="{x:Static base:UiState.IDLE}"/>
+        <Setter Property="Value" Value="0"/>
+        <Setter Property="TextBlockVisibility" Value="Collapsed"/>
+        <Setter Property="TextBlockMargin" Value="10,0,0,0"/>
+        <Setter Property="TextBlockHorizontalAlignment" Value="Left"/>
+        <Setter Property="TextBlockVerticalAlignment" Value="Center"/>
+        <Setter Property="TextValue" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BasicProgressBar}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <Grid x:Name="PART_Track" ClipToBounds="True">
+                            <Border x:Name="PART_Indicator"
+                                    HorizontalAlignment="Left"
+                                    Background="{TemplateBinding Foreground}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"/>
+                            <TextBlock x:Name="Text_ProgressBar"
+                                       Visibility="{TemplateBinding TextBlockVisibility}"
+                                       Margin="{TemplateBinding TextBlockMargin}"
+                                       HorizontalAlignment="{TemplateBinding TextBlockHorizontalAlignment}"
+                                       VerticalAlignment="{TemplateBinding TextBlockVerticalAlignment}"
+                                       Foreground="{DynamicResource Brush.Black}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Text="{TemplateBinding TextValue}"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.IDLE}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusIdle}"/>
+                </Trigger.Setters>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.BUSY}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusReady}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="FadeAtBusy" Storyboard="{StaticResource Storyboard.Fade.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="FadeAtBusy"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.READY}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusReady}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="BlinkAtReady" Storyboard="{StaticResource Storyboard.Blink.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="BlinkAtReady"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.BUILD}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusBuild}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="FadeAtBuild" Storyboard="{StaticResource Storyboard.Fade.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="FadeAtBuild"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.PAUSE}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusBuild}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="BlinkAtPause" Storyboard="{StaticResource Storyboard.Blink.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="BlinkAtPause"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.DONE}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusDone}"/>
+                </Trigger.Setters>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.STOP}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusError}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="BlinkAtStop" Storyboard="{StaticResource Storyboard.Blink.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="BlinkAtStop"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.WARNING}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.Warning}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="BlinkAtWarning" Storyboard="{StaticResource Storyboard.Blink.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="BlinkAtWarning"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="Tag" Value="{x:Static base:UiState.ERROR}">
+                <Trigger.Setters>
+                    <Setter Property="Foreground" Value="{DynamicResource Brush.StatusError}"/>
+                </Trigger.Setters>
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="BlinkAtError" Storyboard="{StaticResource Storyboard.Blink.Opacity}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="BlinkAtError"/>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>
+

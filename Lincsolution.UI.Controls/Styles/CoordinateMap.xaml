@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Lincsolution.UI.Controls">
+
+    <Style TargetType="{x:Type controls:CoordinateMap}">
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="MinHeight" Value="100"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="GridLineBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="OriginBrush" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="OriginDotSize" Value="4"/>
+        <Setter Property="RealDotFill" Value="{DynamicResource Brush.SelectedForeground}"/>
+        <Setter Property="RealDotStroke" Value="Transparent"/>
+        <Setter Property="TargetDotFill" Value="Transparent"/>
+        <Setter Property="TargetDotStroke" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CoordinateMap}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ClipToBounds="True">
+                        <Grid>
+                            <Canvas x:Name="PART_GridCanvas" IsHitTestVisible="False"/>
+                            <Canvas x:Name="PART_OverlayCanvas" IsHitTestVisible="False"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+	<LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	<IsPackable>true</IsPackable>
+	<PackageId>Lincsolution.Core.Rendering</PackageId>
+	<Version>0.1.1</Version>
+	<Authors>Lincsolution</Authors>
+	<Description>Lincsolution 3D Model Loaders and Rendering Data</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <None Update="lib3mf.dll"
+			CopyToOutputDirectory="PreserveNewest"
+			CopyToPublishDirectory="PreserveNewest"
+			Pack="true"
+			PackagePath="runtimes/win-x64/native/lib3mf.dll" />
+  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="System.Numerics.Vectors" Version="4.6.1" />
+	</ItemGroup>
+</Project>

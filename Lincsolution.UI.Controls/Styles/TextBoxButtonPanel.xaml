@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:Lincsolution.UI.Controls">
+    <Style TargetType="{x:Type c:TextBoxButtonPanel}">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.MainBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Inter}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="EndButtonWidth" Value="80"/>
+        <Setter Property="WatermarkForeground" Value="{DynamicResource Brush.ButtonIdleForeground}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type c:TextBoxButtonPanel}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{TemplateBinding FrontSpace}"/>
+                                <ColumnDefinition Width="{TemplateBinding FrontContentWidth}"/>
+                                <ColumnDefinition Width="{TemplateBinding MidSpace}"/>
+                                <ColumnDefinition Width="{TemplateBinding MidContentWidth}"/>
+                                <ColumnDefinition Width="{TemplateBinding MidSpace}"/>
+                                <ColumnDefinition Width="{TemplateBinding EndContentWidth}"/>
+                                <ColumnDefinition Width="{TemplateBinding EndSpace}"/>
+                            </Grid.ColumnDefinitions>
+                            <c:BasicTextBlock Grid.Column="1"
+                                              Width="{TemplateBinding FrontTextWidth}"
+                                              Height="{TemplateBinding FrontContentHeight}"
+                                              HorizontalAlignment="{TemplateBinding FrontContentHorizontalAlignment}"
+                                              HorizontalContentAlignment="Stretch"
+                                              VerticalAlignment="{TemplateBinding FrontContentVerticalAlignment}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              FontFamily="{TemplateBinding FontFamily}"
+                                              FontSize="{TemplateBinding FrontTextFontSize}"
+                                              FontWeight="{TemplateBinding FrontTextFontWeight}"
+                                              TextAlignment="{TemplateBinding FrontTextAlignment}"
+                                              Text="{TemplateBinding FrontText}"
+                                              />
+                            <c:ValidationTextBox Grid.Column="3"
+                                                 Width="{TemplateBinding MidTextWidth}"
+                                                 Height="{TemplateBinding MidContentHeight}"
+                                                 HorizontalAlignment="{TemplateBinding MidContentHorizontalAlignment}"
+                                                 HorizontalContentAlignment="Stretch"
+                                                 VerticalAlignment="{TemplateBinding MidContentVerticalAlignment}"
+                                                 Foreground="{TemplateBinding Foreground}"
+                                                 FontFamily="{TemplateBinding FontFamily}"
+                                                 FontSize="{TemplateBinding MidTextFontSize}"
+                                                 FontWeight="{TemplateBinding MidTextFontWeight}"
+                                                 TextAlignment="{TemplateBinding MidTextAlignment}"
+                                                 WatermarkFontSize="{TemplateBinding MidTextFontSize}"
+                                                 WatermarkForeground="{TemplateBinding WatermarkForeground}"
+                                                 WatermarkFontWeight="{TemplateBinding MidTextFontWeight}"
+                                                 Text="{Binding MidText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 Watermark="{TemplateBinding Watermark}"
+                                                 CornerRadius="{TemplateBinding MidTextCornerRadius}"
+                                                 />
+                            <c:BasicButton Grid.Column="5"
+                                           Width="{TemplateBinding EndButtonWidth}"
+                                           Height="{TemplateBinding EndContentHeight}"
+                                           HorizontalAlignment="{TemplateBinding EndContentHorizontalAlignment}"
+                                           VerticalAlignment="{TemplateBinding EndContentVerticalAlignment}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontSize="{TemplateBinding ButtonContentFontSize}"
+                                           FontWeight="{TemplateBinding ButtonContentFontWeight}"
+                                           ContentHorizontalAlignment="{TemplateBinding ButtonContentHorizontalAlignment}"
+                                           ContentVerticalAlignment="{TemplateBinding ButtonContentVerticalAlignment}"
+                                           Content="{TemplateBinding ButtonContentText}"
+                                           CornerRadius="{TemplateBinding ButtonCornerRadius}"
+                                           />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

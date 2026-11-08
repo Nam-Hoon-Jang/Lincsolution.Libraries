@@ -1,0 +1,84 @@
+<UserControl x:Class="LibraryTester.Views.Dashboard.Controls.TelemetryTester"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="740"
+             Loaded="OnLoaded" Unloaded="OnUnloaded">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="Margin" Value="0,0,8,8"/>
+            <Setter Property="MinWidth" Value="90"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource Brush.ForegroundNormal}"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="20" Background="{DynamicResource Brush.MainBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,14">
+            <TextBlock Text="Telemetry Tester" FontSize="24" FontWeight="SemiBold"/>
+            <TextBlock Text="가상 센서 → 수집 목록 접수 → 백그라운드 SQLite 저장" Margin="0,4,0,0"/>
+        </StackPanel>
+        <WrapPanel Grid.Row="1">
+            <TextBlock Text="센서 수" VerticalAlignment="Center" Margin="0,0,8,8"/>
+            <TextBox x:Name="SensorCountBox" Text="100" Width="70" Margin="0,0,18,8" AutomationProperties.Name="센서 수"/>
+            <TextBlock Text="수집 주기(ms)" VerticalAlignment="Center" Margin="0,0,8,8"/>
+            <TextBox x:Name="IntervalBox" Text="100" Width="70" Margin="0,0,18,8" AutomationProperties.Name="수집 주기"/>
+            <TextBlock Text="자동 저장(ms)" VerticalAlignment="Center" Margin="0,0,8,8"/>
+            <TextBox x:Name="SaveIntervalBox" Text="100" Width="70" Margin="0,0,18,8" AutomationProperties.Name="자동 저장 주기"/>
+            <CheckBox x:Name="MissingBox" Content="일부 센서 누락 재현" VerticalAlignment="Center" Margin="0,0,0,8"
+                      Foreground="{DynamicResource Brush.ForegroundNormal}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2">
+            <Button x:Name="StartButton" Content="수집 시작" Click="OnStart"/>
+            <Button x:Name="StopButton" Content="정상 종료" Click="OnStop" IsEnabled="False"/>
+            <Button x:Name="CancelButton" Content="취소 종료" Click="OnCancel" IsEnabled="False"/>
+            <Button x:Name="EventButton" Content="이벤트 기록" Click="OnRecordEvent" IsEnabled="False"/>
+            <Button x:Name="FlushButton" Content="저장 / 재시도" Click="OnFlush" IsEnabled="False"/>
+            <Button x:Name="InspectButton" Content="DB 결과 확인" Click="OnInspect" IsEnabled="False"/>
+            <Button x:Name="FolderButton" Content="폴더 열기" Click="OnOpenFolder" IsEnabled="False"/>
+        </WrapPanel>
+        <Border Grid.Row="3" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,12">
+            <StackPanel>
+                <TextBlock x:Name="StateText" Text="대기 · 설정 후 수집을 시작하세요." FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock x:Name="StatisticsText" Text="Frame 접수 0 · Event 접수 0 · 대기 0 · 포화 거부 0" Margin="0,5,0,0"/>
+                <TextBlock x:Name="DatabaseResultText" Text="저장 건수는 종료 후 ‘DB 결과 확인’으로 검증합니다." Margin="0,5,0,0" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="3*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="2*"/></Grid.ColumnDefinitions>
+            <DataGrid x:Name="SensorGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
+                      EnableRowVirtualization="True" HeadersVisibility="Column" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="55"/>
+                    <DataGridTextColumn Header="센서" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="종류" Binding="{Binding Kind}" Width="85"/>
+                    <DataGridTextColumn Header="최근 측정값" Binding="{Binding Value}" Width="115"/>
+                    <DataGridTextColumn Header="상태" Binding="{Binding Status}" Width="85"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DockPanel Grid.Column="2">
+                <TextBlock DockPanel.Dock="Top" Text="동작 / 오류 로그 (최근 200건)" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ListBox x:Name="LogList" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" TextWrapping="Wrap" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ListBox}}"/></DataTemplate></ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Grid>
+        <StackPanel Grid.Row="5" Margin="0,12,0,0">
+            <TextBlock Text="DB 파일 경로 (읽기 전용)" FontWeight="SemiBold"/>
+            <TextBox x:Name="PathBox" IsReadOnly="True" Margin="0,5,0,5" AutomationProperties.Name="DB 파일 경로"/>
+            <TextBlock Text="접수 성공은 디스크 저장 완료가 아닙니다. 탭을 떠나면 수집을 중단하고 취소 종료합니다."
+                       TextWrapping="Wrap" FontSize="12"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
